@@ -52,7 +52,7 @@ rails s -b 0.0.0.0
 Finally, you can access the web application on your browser.
 
 ```
-localhost:3000/s
+localhost:3000/
 # or
 SERVER_IP:3000/
 ```
