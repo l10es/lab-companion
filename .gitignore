@@ -32,6 +32,7 @@
 
 # Ignore IDE configs
 /.idea
+/.vscode
 
 # Ignore DS_Store directory
 /.DS_Store
