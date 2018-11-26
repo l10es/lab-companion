@@ -1,0 +1,2 @@
+class MemberGrade < ApplicationRecord
+end
