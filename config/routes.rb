@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :members
   resources :post_categories
   resources :post_statuses
   resources :posts
@@ -9,4 +10,7 @@ Rails.application.routes.draw do
   resources :roles
   resources :members
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "welcome#index"
+
+  get 'post', :to => 'post#index', :as => :member_root 
 end
