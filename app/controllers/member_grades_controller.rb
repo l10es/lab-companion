@@ -1,4 +1,6 @@
 class MemberGradesController < ApplicationController
+  before_action :authenticate_member!
+  before_filter :allow_to_admin_member
   before_action :set_member_grade, only: [:show, :edit, :update, :destroy]
 
   # GET /member_grades

@@ -1,4 +1,6 @@
 class PostCategoriesController < ApplicationController
+  before_action :authenticate_member!
+  before_filter :allow_to_admin_member
   before_action :set_post_category, only: [:show, :edit, :update, :destroy]
 
   # GET /post_categories

@@ -1,4 +1,6 @@
 class PostStatusesController < ApplicationController
+  before_action :authenticate_member!
+  before_filter :allow_to_admin_member
   before_action :set_post_status, only: [:show, :edit, :update, :destroy]
 
   # GET /post_statuses

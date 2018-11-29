@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_092325) do
+ActiveRecord::Schema.define(version: 2018_11_27_043646) do
 
   create_table "member_grades", force: :cascade do |t|
     t.string "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_092325) do
     t.integer "room_status_id"
     t.integer "member_status_id"
     t.integer "member_grade_id"
-    t.string "member_id"
+    t.string "member_specific_id"
     t.string "email"
     t.string "name"
     t.binary "icon"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_092325) do
     t.integer "post_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "member_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_092325) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "member_id"
   end
 
 end

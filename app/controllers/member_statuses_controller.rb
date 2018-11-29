@@ -1,4 +1,6 @@
 class MemberStatusesController < ApplicationController
+  before_action :authenticate_member!
+  before_filter :allow_to_admin_member_only
   before_action :set_member_status, only: [:show, :edit, :update, :destroy]
 
   # GET /member_statuses
