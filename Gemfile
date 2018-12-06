@@ -30,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 # For material theme
 gem 'materialize-sass'
 
+# For JQuery
+gem 'jquery-rails'
+gem 'rails_utils'
+
 # For user authentication
 gem 'devise'
 
