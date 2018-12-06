@@ -22,6 +22,11 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def icon
+    icon = Icon.find( params[:id] )
+    send_data icon.content, :filename => icon.name, :type => icon.content_type
+  end 
+
   # POST /posts
   # POST /posts.json
   def create

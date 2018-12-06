@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  get 'icons/register'
+  put "icons/update" => "icons#update" 
+
   get 'members', :to => 'members#index', :as => :member_root
 
   devise_for :members
+  get "icons/face" => "icons#face" 
+
   resources :post_categories
   resources :post_statuses
   resources :posts

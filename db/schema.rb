@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_043646) do
+ActiveRecord::Schema.define(version: 2018_12_06_045937) do
+
+  create_table "icons", force: :cascade do |t|
+    t.integer "member_id"
+    t.string "name"
+    t.string "content_type"
+    t.binary "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "member_grades", force: :cascade do |t|
     t.string "name"
@@ -32,7 +41,6 @@ ActiveRecord::Schema.define(version: 2018_11_27_043646) do
     t.string "member_specific_id"
     t.string "email"
     t.string "name"
-    t.binary "icon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false

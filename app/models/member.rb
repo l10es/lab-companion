@@ -9,4 +9,5 @@ class Member < ApplicationRecord
   belongs_to :member_grade
   belongs_to :room_status
   belongs_to :role
+  has_one :icon
 end
