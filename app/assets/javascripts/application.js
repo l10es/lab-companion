@@ -12,38 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require jquery
-//= require jquery_ujs
+//= require turbolinks
 //= require_tree .
-//= require materialize
-//= require materialize-sprockets
-(function ($) {
-    $(function () {
-        $('.button-collapse').sideNav({
-            menuWidth: 300, // Default is 300
-            edge: 'left', // Choose the horizontal origin
-            closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-            draggable: true, // Choose whether you can drag to open on touch screens,
-        });
-        $('.collapsible').collapsible();
-        $('.tap-target').tapTarget('open');
-    });
-})(jQuery);
-
-$('.button-collapse').sideNav('show');
-$('.button-collapse').sideNav('hide');
-
-$(document).on('click',　function(){
-  $('.tap-target').tapTarget('close');
-});
-
-(function(){
-    $('.scrollspy').scrollSpy();
-});
-
-
-$(document).ready(function () {
-    $('.parallax').parallax();
-});
-
-$('.button-collapse').sideNav('show');
