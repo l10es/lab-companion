@@ -24,19 +24,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-    def edit
-      if @member.icon
-        @face = Icon.find(@mamber.icon.id)
-      else
-        @face = Icon.new
-      end
-    end
   end
-
-  def icon
-    icon = Icon.find( params[:id] )
-    send_data icon.content, :filename => icon.name, :type => icon.content_type
-  end 
   
   # POST /members
   # POST /members.json
