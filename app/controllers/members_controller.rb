@@ -1,5 +1,7 @@
 class MembersController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
+  before_action :allow_to_admin_member, only: [:destroy]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members

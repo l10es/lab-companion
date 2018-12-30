@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'mypage/index'
+  get 'mypage/index', :to => 'mypage#index', :as => :member_root
   put 'icons/update' => "icons#update" 
   
   devise_for :members
-  get 'members', :to => 'members#index', :as => :member_root
+  get 'members', :to => 'members#index'
   get 'members/icon' => 'members#icon'
   get 'post/icon' => 'post#icon'
 

@@ -1,5 +1,7 @@
 class StatusesController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
+  before_action :allow_to_admin_member
   before_action :set_status, only: [:show, :edit, :update, :destroy]
 
   # GET /statuses

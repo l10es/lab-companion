@@ -45,6 +45,13 @@ gem 'redcarpet'
 # Enable syntax highlight
 gem 'coderay'
 
+# For material theme
+gem 'materialize-sass'
+
+# For JQuery
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'rails_utils'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
