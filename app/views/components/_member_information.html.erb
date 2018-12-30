@@ -1,0 +1,52 @@
+<% if current_member.role.id == 1 %>
+  <div class="card indigo darken-1 hoverable">
+    <div class="card-content white-text">
+<% else %>
+  <div class="card hoverable">
+    <div class="card-content">
+<% end %>
+      <span class="card-title">Your information</span>
+      <div class="divider"></div>
+      <p>
+        <strong>Specific id:</strong>
+        <%= current_member.specific_id %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= current_member.email %>
+      </p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= current_member.name %>
+      </p>
+
+      <% if current_member.role.id == 1%>
+        <p>
+          <strong>Role:</strong>
+          <%= current_member.role.name %>
+        </p>
+      <% end %>
+
+      <p>
+        <strong>grade:</strong>
+        <%= current_member.grade.name %>
+      </p>
+
+      <p>
+        <strong>Room Status:</strong>
+        <%= current_member.room_status.name %>
+      </p>
+
+      <% if current_member.role.id == 1%>
+        <p>
+          <strong>Member Status:</strong>
+          <%= current_member.status.name %>
+        </p>
+      <% end %>
+    </div>
+    <div class="card-action">
+      <%= link_to 'Edit', edit_member_path(current_member) %>
+    </div>
+  </div>

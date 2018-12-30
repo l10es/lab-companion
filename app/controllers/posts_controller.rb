@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(member_id: current_member.id ).all
+    @published_posts = Post.where(published: true ).all
   end
 
   # GET /posts/1
