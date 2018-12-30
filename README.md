@@ -13,6 +13,7 @@ In the future, we will provide following functions on this application.
 1. File storage
 2. Calender
 3. Laboratory's event notification
+4. Customizing the laboratory members icon
 
 ## Requirements
 

@@ -20,17 +20,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-  end
-
-  def icon
-    icon = Icon.find( params[:id] )
-    send_data icon.content, :filename => icon.name, :type => icon.content_type
   end 
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.member_id = current_member.id
 
     respond_to do |format|
       if @post.save
@@ -75,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :published)
+      params.require(:post).permit(:title, :content, :published, :category_id, :member_id)
     end
 end

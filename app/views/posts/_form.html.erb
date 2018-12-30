@@ -17,14 +17,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.label "Content (Markdown enabled)" %>
+    <%= form.text_area :content, :size => "100x50" %>
   </div>
 
   <div class="field">
     <%= form.label :published %>
     <%= form.check_box :published %>
   </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, Category.all.collect{ |c| [c.name, c.id]} %>
 
   <div class="actions">
     <%= form.submit %>

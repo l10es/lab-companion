@@ -13,6 +13,25 @@
   <%= @member.name %>
 </p>
 
+<p>
+  <strong>Role:</strong>
+  <%= @member.role.name %>
+</p>
+
+<p>
+  <strong>grade:</strong>
+  <%= @member.grade.name %>
+</p>
+
+<p>
+  <strong>Room Status:</strong>
+  <%= @member.room_status.name %>
+</p>
+
+<p>
+  <strong>Member Status:</strong>
+  <%= @member.status.name %>
+</p>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

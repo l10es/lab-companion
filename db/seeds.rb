@@ -70,10 +70,15 @@ Grade.find_or_create_by(id: 11) do |grade|
   grade.name = 'D4'
 end
 
+Category.find_or_create_by(id: 1) do |category|
+  category.name = 'General'
+end
+
 Member.find_or_create_by(id: 1) do |member|
   member.email = 'admin@example.com'
   member.password = 'password'
   member.name = 'Admin'
   member.role_id = 1
+  member.status_id = 1
   member.specific_id = 'Admin'
 end

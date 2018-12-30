@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'mypage/index'
   put 'icons/update' => "icons#update" 
   
   devise_for :members

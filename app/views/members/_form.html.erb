@@ -26,11 +26,6 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :icon %>
-    <%= form.file_field :icon %>
-  </div>
-
   <% if current_member.role_id == 1 %>
     <div class="field">
       <%= form.label :role_id %>
