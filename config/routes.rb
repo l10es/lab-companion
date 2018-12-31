@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'about_us/index'
   get 'mypage/index', :to => 'mypage#index', :as => :member_root
   put 'icons/update' => "icons#update" 
   
@@ -19,4 +20,5 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   root to: 'welcome#index'
+  # get '*path', controller: 'application', action: 'render_404'
 end

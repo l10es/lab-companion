@@ -1,7 +1,11 @@
 class MypageController < ApplicationController
   before_action :authenticate_member!
   def index
-    @members = Member.all
+    if current_member.role.id != 1
+      @members = Member.where(status_id: 1).all
+    else
+      @members = Member.all
+    end
     @roles = Role.all
     @grades = Grade.all
     @statuses = Status.all
@@ -10,6 +14,6 @@ class MypageController < ApplicationController
     @member_posts = Post.where(member_id: current_member.id ).all
     @published_posts = Post.where(published: true ).all
     @categories = Category.all
-    @todos = Todo.all
+    @todos = Todo.where(member_id: current_member.id).all
   end
 end

@@ -1,7 +1,9 @@
 class MembersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_member!
-  before_action :allow_to_admin_member, only: [:destroy]
+  before_action :active_member!
+  before_action :allow_to_admin_member, only: [:index, :show, :destroy]
+  before_action :allow_to_correct_member, only:[:edit, :show]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
@@ -49,7 +51,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to member_root_url, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }

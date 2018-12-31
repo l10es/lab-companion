@@ -10,21 +10,29 @@
   </thead>
 
   <tbody>
-    <% if @published_posts.length == 0%>
+    <% if @posts.length == 0%>
       <tr>
         <td colspan=2></td>
         <td>No data in table<td>
         <td colspan=2></td>
       </tr>
     <% else %>
-      <% @published_posts.each do |post| %>
-        <tr>
-          <td><%= post.title %></td>
-          <td><%= truncate(markdown(post.content), length: 10 ) %></td>
-          <td><%= post.published %></td>
-          <td><%= post.category.name %></td>
-          <td><%= post.member.name %></td>
-        </tr>
+      <% @posts.each do |post| %>
+        <% if post.member.id == current_member.id || post.published == true %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= truncate(markdown(post.content), length: 10 ) %></td>
+            <td>
+              <% if post.published %>
+                Published
+              <% else %>
+                Draft
+              <% end %>
+            </td>
+            <td><%= post.category.name %></td>
+            <td><%= post.member.name %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

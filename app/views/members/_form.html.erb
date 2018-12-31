@@ -1,39 +1,66 @@
-<%= form_with(model: member, local: true, multipart: true) do |form| %>
-  <% if member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+<div class="container-fluid pt-3" style="padding-top: 4rem">
+  <div class="row">
+    <div class="col s10 offset-s1">
+      <div class="card hoverable">
+        <div class="card-content">
+          <span class="card-title center">
+            <% if current_page?(edit_member_path) %>
+              Edit member informations
+            <% end %>
+          </span>
+          <div class="divider"></div>
+            <%= form_with(model: member, local: true, multipart: true) do |form| %>
+              <% if member.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
 
-      <ul>
-      <% member.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                  <ul>
+                    <% member.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <div class="field">
+                <%= form.label :specific_id %>
+                <%= form.text_field :specific_id %>
+              </div>
+
+              <div class="field">
+                <%= form.label :email %>
+                <%= form.text_field :email, :disabled => true %>
+              </div>
+
+              <div class="field">
+                <%= form.label :name %>
+                <%= form.text_field :name %>
+              </div>
+
+              <% if current_member.role_id == 1 %>
+                <div class="field">
+                  <%= form.label :role_id %>
+                  <%= form.select :role_id, Role.all.collect{ |c| [c.name, c.id]} %>
+                </div>
+              <% end %>
+              <br />
+              <div class="form-actions">
+                <i class="btn waves-effect waves-input-wrapper" ><input class="waves-button-input" data-disable-with="Submit" value="Submit" type="submit" name="commit"></i>
+              </div>
+            <% end %>
+            <br />
+            <div class="card-action">
+              <% if current_member.role.id == 1 %>
+                <%= link_to "back to Members", members_path %>
+              <% end %>
+              <% if member.id == current_member.id %>
+                <%= link_to "edit email or password", edit_member_registration_path %>
+              <% end %>
+              <%= link_to "back", member_root_url %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :specific_id %>
-    <%= form.text_field :specific_id %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <% if current_member.role_id == 1 %>
-    <div class="field">
-      <%= form.label :role_id %>
-      <%= form.select :role_id, Role.all.collect{ |c| [c.name, c.id]} %>
-    </div>
-  <% end %>
-  
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

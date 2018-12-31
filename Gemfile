@@ -36,10 +36,10 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# For user authentication
+# Sipport user authentication
 gem 'devise'
 
-# For markdown support
+# Support writing with Markdown
 gem 'redcarpet'
 
 # Enable syntax highlight

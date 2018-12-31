@@ -1,12 +1,15 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
+  before_action :active_member!
+  before_action :allow_to_correct_member, only: [:edit, :update, :destroy]
+  before_action :active_member!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(member_id: current_member.id ).all
-    @published_posts = Post.where(published: true ).all
+    @posts = Post.all
   end
 
   # GET /posts/1

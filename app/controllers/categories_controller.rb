@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_member!
+  before_action :active_member!
   before_action :allow_to_admin_member, only: [:edit, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 

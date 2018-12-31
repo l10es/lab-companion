@@ -14,7 +14,22 @@ module ApplicationHelper
   end
 
   def allow_to_admin_member
-    if !current_member || current_member.id != 1
+    if !current_member || current_member.role.id != 1
+      redirect_to :member_root
+    end
+  end
+
+  def allow_to_correct_member
+    @member = Member.find(params[:id])
+    if current_member.role.id != 1
+      unless  current_member.id == @member.id
+        redirect_to :member_root
+      end
+    end
+  end
+
+  def active_member!
+    if !current_member || current_member.status.id != 1
       redirect_to :member_root
     end
   end
