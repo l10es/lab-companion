@@ -1,10 +1,18 @@
 class MembersController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
+  before_action :active_member!
+  before_action :allow_to_admin_member, only: [:index, :show, :destroy]
+  before_action :allow_to_correct_member, only:[:edit, :show]
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
+    if current_member.specific_id.blank?
+      redirect_to edit_member_path(current_member)
+    end
+    session[:member] = current_member
     @members = Member.all
   end
 
@@ -21,7 +29,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
   end
-
+  
   # POST /members
   # POST /members.json
   def create
@@ -43,7 +51,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to member_root_url, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }
@@ -70,6 +78,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:role_id, :room_status_id, :member_status_id, :member_grade_id, :member_id, :email, :name, :icon)
+      params.require(:member).permit(:specific_id, :email, :name, :role_id, :grade_id)
     end
 end

@@ -1,5 +1,6 @@
 class TodosController < ApplicationController
   before_action :authenticate_member!
+  before_action :active_member!
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
   # GET /todos
@@ -26,6 +27,7 @@ class TodosController < ApplicationController
   # POST /todos.json
   def create
     @todo = Todo.new(todo_params)
+    @todo.member_id = current_member.id
 
     respond_to do |format|
       if @todo.save
@@ -70,6 +72,6 @@ class TodosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def todo_params
-      params.require(:todo).permit(:title, :content)
+      params.require(:todo).permit(:title, :content, :member_id)
     end
 end

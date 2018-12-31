@@ -15,13 +15,8 @@ class MembersTest < ApplicationSystemTestCase
     click_on "New Member"
 
     fill_in "Email", with: @member.email
-    fill_in "Icon", with: @member.icon
-    fill_in "Member Grade", with: @member.member_grade_id
-    fill_in "Member", with: @member.member_id
-    fill_in "Member Status", with: @member.member_status_id
     fill_in "Name", with: @member.name
-    fill_in "Role", with: @member.role_id
-    fill_in "Room Status", with: @member.room_status_id
+    fill_in "Specific", with: @member.specific_id
     click_on "Create Member"
 
     assert_text "Member was successfully created"
@@ -33,13 +28,8 @@ class MembersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Email", with: @member.email
-    fill_in "Icon", with: @member.icon
-    fill_in "Member Grade", with: @member.member_grade_id
-    fill_in "Member", with: @member.member_id
-    fill_in "Member Status", with: @member.member_status_id
     fill_in "Name", with: @member.name
-    fill_in "Role", with: @member.role_id
-    fill_in "Room Status", with: @member.room_status_id
+    fill_in "Specific", with: @member.specific_id
     click_on "Update Member"
 
     assert_text "Member was successfully updated"

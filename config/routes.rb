@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
-  get 'members', :to => 'members#index', :as => :member_root
-
+  get 'about_us/index'
+  get 'mypage/index', :to => 'mypage#index', :as => :member_root
+  put 'icons/update' => "icons#update" 
+  
   devise_for :members
-  resources :post_categories
-  resources :post_statuses
+  get 'members', :to => 'members#index'
+  get 'members/icon' => 'members#icon'
+  get 'post/icon' => 'post#icon'
+
+  resources :members
+  resources :categories
   resources :posts
   resources :todos
-  resources :member_grades
-  resources :member_statuses
+  resources :grades
+  resources :statuses
   resources :room_statuses
   resources :roles
-  resources :members
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "welcome#index"
+  get 'welcome/index'
+
+  root to: 'welcome#index'
+  # get '*path', controller: 'application', action: 'render_404'
 end

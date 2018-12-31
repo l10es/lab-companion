@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
+  before_action :active_member!
+  before_action :allow_to_correct_member, only: [:edit, :update, :destroy]
+  before_action :active_member!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -20,12 +24,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-  end
+  end 
 
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.member_id = current_member.id
 
     respond_to do |format|
       if @post.save
@@ -70,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :post_status_id, :post_category_id)
+      params.require(:post).permit(:title, :content, :published, :category_id, :member_id)
     end
 end

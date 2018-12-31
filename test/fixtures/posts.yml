@@ -3,11 +3,9 @@
 one:
   title: MyString
   content: MyText
-  post_status_id: 1
-  post_category_id: 1
+  published: false
 
 two:
   title: MyString
   content: MyText
-  post_status_id: 1
-  post_category_id: 1
+  published: false

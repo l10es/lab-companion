@@ -1,0 +1,39 @@
+<table class="responsive-table highlight centered dataTable no-footer">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Writer</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @posts.length == 0%>
+      <tr>
+        <td colspan=2></td>
+        <td>No data in table<td>
+        <td colspan=2></td>
+      </tr>
+    <% else %>
+      <% @posts.each do |post| %>
+        <% if post.member.id == current_member.id || post.published == true %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= truncate(markdown(post.content), length: 10 ) %></td>
+            <td>
+              <% if post.published %>
+                Published
+              <% else %>
+                Draft
+              <% end %>
+            </td>
+            <td><%= post.category.name %></td>
+            <td><%= post.member.name %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,121 @@
+<div class="row">
+  <div class="col s12 m4 l8">
+  <% if current_member.role.id == 1 %>
+    <h1>Admin console</h1>
+  <% else %>
+    <h1>My page</h1>
+  <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m6 l3">
+    <%= render :partial => "components/member_information" %>
+  </div>
+</div>
+
+<% if current_member.status.name == 'Active' %>
+<div class="row">
+  <div class="col s12">
+      <%= render :partial => "components/member_list" %>
+      <% if current_member.role.id == 1%>
+        <div class="card-action">
+          <%= link_to 'detail', members_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card hoverable">
+      <div class="card-content">
+        <span class="card-title">Post List</span>
+        <div class="divider"></div>
+        <%= render :partial => "components/post_list" %>
+      </div>
+      <div class="card-action">
+        <%= link_to 'detail', posts_path %>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card hoverable">
+      <div class="card-content">
+        <span class="card-title">Todo List</span>
+        <div class="divider"></div>
+        <%= render :partial => "components/todo_list" %>
+      </div>
+      <div class="card-action">
+        <%= link_to 'detail', todos_path %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<% if current_member.role.id == 1%>
+  <div class="row">
+    <div class="col s12 m3">
+      <div class="card indigo darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Grade List</span>
+          <div class="divider"></div>
+          <%= render :partial => "components/grade_list" %>
+        </div>
+        <div class="card-action">
+          <%= link_to 'detail', grades_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card indigo darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Role List</span>
+          <div class="divider"></div>
+            <%= render :partial => "components/role_list" %>
+          </div>
+        <div class="card-action">
+          <%= link_to 'detail', roles_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card indigo darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Status List</span>
+          <div class="divider"></div>
+            <%= render :partial => "components/status_list" %>
+          </div>
+        <div class="card-action">
+          <%= link_to 'detail', statuses_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card indigo darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Room Status List</span>
+          <div class="divider"></div>
+              <%= render :partial => "components/room_status_list" %>
+          </div>
+        <div class="card-action">
+          <%= link_to 'detail', room_statuses_path %>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m3">
+      <div class="card indigo darken-1 hoverable">
+        <div class="card-content white-text">
+          <span class="card-title">Category List</span>
+          <div class="divider"></div>
+            <%= render :partial => "components/categories_list" %>
+          </div>
+        <div class="card-action">
+          <%= link_to 'detail', room_statuses_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,3 +1,3 @@
 class RoomStatus < ApplicationRecord
-    has_many :members
+  has_many :members
 end

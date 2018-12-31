@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-    belongs_to :member
-    belongs_to :post_categories
-    belongs_to :post_status
+  belongs_to :member
+  belongs_to :category
 end
