@@ -31,3 +31,13 @@ $(document).ready(function(){
 });
 $('#textarea1').val('New Text');
 M.textareaAutoResize($('#textarea1'));
+$(document).ready(function(){
+  $('.fixed-action-btn').floatingActionButton();
+});
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.fixed-action-btn');
+  var instances = M.FloatingActionButton.init(elems, {
+    direction: 'top',
+    hoverEnabled: false
+  });
+});
