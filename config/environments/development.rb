@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports.
-  config.consider_all_requests_local = true
+  config.consider_all_requests_local = false
 
   # default url option for mailser.
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

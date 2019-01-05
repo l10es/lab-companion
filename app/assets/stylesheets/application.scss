@@ -94,3 +94,13 @@ pre[class*="language-"] {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.fab-tip {
+  position: fixed;
+  right: 85px;
+  padding: 0px 0.5rem;
+  text-align: right;
+  background-color: #ffffff;
+  border-radius: 2px;
+  color: #323232;
+  width: auto;
+}
