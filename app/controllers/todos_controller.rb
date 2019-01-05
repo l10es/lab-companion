@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
   before_action :active_member!
   before_action :set_todo, only: [:show, :edit, :update, :destroy]

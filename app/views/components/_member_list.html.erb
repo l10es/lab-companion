@@ -8,10 +8,11 @@
       <span class="card-title">Current Members</span>
       <div class="divider"></div>
       <div class="container-fluid pt-3" style="padding-top: 1rem">
-        <table class="responsive-table highlight centered dataTable no-footer">
+        <table class="responsive-table highlight centered dataTable no-footer include-icon">
           <thead>
             <tr>
               <th>Specific</th>
+              <th>Icon</th>
               <th>Name</th>
               <th>Email</th>
               <% if current_member.role.id == 1%>
@@ -25,10 +26,22 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody class="centered">
             <% @members.each do |member| %>
               <tr>
                 <td><%= member.specific_id %></td>
+                <td>
+                  <% if member.icon %>
+                    <% icon = member.icon %>
+                    <% if icon.content_type =~ /^image\/.*?(png|jpeg|gif|jpg)$/ %>
+                      <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60', class: "circle"%>
+                    <% else %>
+                      <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle", :size => '60x60'%>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle", :size => '60x60' %>
+                  <% end %>
+                </td>
                 <td><%= member.name %></td>
                 <td><%= member.email %></td>
                 <% if current_member.role.id == 1%>

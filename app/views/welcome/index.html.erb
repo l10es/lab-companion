@@ -9,7 +9,8 @@
       Have a grate day!!
     </p>
     <% if !member_signed_in? %>
-      <a class="waves-effect waves-light btn" href=<%= new_member_session_path %>>Log&nbsp;in</a>
+      <a class="waves-effect waves-light btn" href="<%= new_member_session_path %>">Log&nbsp;in</a>
+      <a class="waves-effect waves-light btn" href="<%= new_member_registration_path %>">Sign&nbsp;up</a>
     <% end %>
   </div>
 </div>
