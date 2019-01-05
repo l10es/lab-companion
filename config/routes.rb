@@ -17,12 +17,16 @@ Rails.application.routes.draw do
   get 'mypage/background' => 'mypage#background'
   get 'members/background' => 'members#background'
   
-  devise_for :members
+  devise_for :members, controllers: {
+    #sessions: 'members/sessions'
+  }
+
   get 'members', :to => 'members#index'
   get 'members/icon' => 'members#icon'
 
   devise_scope :member do
-    get 'devise/registrations/icon' => 'devise#registrations#icon'
+    get 'devise/registrations/icon' => 'devise/registrations#icon'
+    get 'devise/passwords/icon' => 'devise/passwords#icon'
   end
 
   resources :members
