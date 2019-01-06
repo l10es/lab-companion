@@ -5,18 +5,20 @@
         <div class="card-content">
           <span class="card-title center">Posts</span>
           <div class="divider"></div>
-          <table class="responsive-table highlight centered dataTable no-footer">
+          <% if @posts.length == 0 %>
+            <table class="bordered highlight centered">
+          <% else %>
+            <table class="bordered responsive-table highlight centered">
+          <% end %>
             <thead>
               <tr>
                 <th>Title</th>
                 <th>Content</th>
-                <th>Published</th>
+                <th>Status</th>
                 <th>Category</th>
                 <th>Writer</th>
-                <% if current_member.role.id == 1 %>
-                  <% if @posts.length != 0%>
-                    <th colspan="3">Operation</th>
-                  <% end %>
+                <% if current_member.role.id == 1 && @posts.length != 0%>
+                  <th colspan="3" class="centered">Operations</th>
                 <% end %>
               </tr>
             </thead>
@@ -24,9 +26,7 @@
             <tbody>
               <% if @posts.length == 0%>
                 <tr>
-                  <td colspan=2></td>
-                  <td>No data in table<td>
-                  <td colspan=2></td>
+                  <td colspan=5 class="centered">There is no Posts</td>
                 </tr>
               <% else %>
                 <% @posts.each do |post| %>
@@ -34,7 +34,13 @@
                     <tr>
                       <td><%= post.title %></td>
                       <td><%= truncate(markdown(post.content), length: 10 ) %></td>
-                      <td><%= post.published %></td>
+                      <td>
+                        <% if post.published %>
+                          Published
+                        <% else %>
+                          Draft
+                        <% end %>
+                      </td>
                       <td><%= post.category.name %></td>
                       <td><%= post.member.name %></td>
                       <td><%= link_to 'Show', post %></td>
@@ -44,6 +50,10 @@
                           <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                         <% end %>
                       <% end %>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td colspan=5 class="centered">There is no Posts</td>
                     </tr>
                   <% end %>
                 <% end %>
@@ -55,3 +65,4 @@
     </div>
   </div>
 </div>
+<%= render :partial => "components/floating_action_button" %>

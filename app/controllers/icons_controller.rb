@@ -7,7 +7,7 @@ class IconsController < ApplicationController
   # PUT /icons/update
   # PUT /icons/update.json
   def update
-    if params[:file] != nil
+    if !params[:file].nil?
       @icon = Icon.find_by_member_id(current_member.id)
       @icon.destroy if @icon
       @member = Member.find(current_member.id)

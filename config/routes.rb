@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'mypage/index', :to => 'mypage#index', :as => :member_root
   put 'icons/update' => "icons#update"
   put 'backgrounds/update' => "backgrounds#update"
+  get 'about_us/icon' => 'about_us#icon'
   get 'mypage/icon' => 'mypage#icon'
   get 'members/icon' => 'members#icon'
   get 'todos/icon' => 'todos#icon'
@@ -22,7 +23,6 @@ Rails.application.routes.draw do
   }
 
   get 'members', :to => 'members#index'
-  get 'members/icon' => 'members#icon'
 
   devise_scope :member do
     get 'devise/registrations/icon' => 'devise/registrations#icon'

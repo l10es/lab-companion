@@ -1,39 +1,48 @@
-<table class="responsive-table highlight centered dataTable no-footer">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Published</th>
-      <th>Category</th>
-      <th>Writer</th>
-    </tr>
-  </thead>
+<div class="card material-table hoverable">
+  <div class="card-content">
+    <span class="card-title">Post List</span>
+    <div class="divider"></div>
+    <table class="highlight centered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Category</th>
+          <th>Writer</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% if @posts.length == 0%>
-      <tr>
-        <td colspan=2></td>
-        <td>No data in table<td>
-        <td colspan=2></td>
-      </tr>
-    <% else %>
-      <% @posts.each do |post| %>
-        <% if post.member.id == current_member.id || post.published == true %>
+      <tbody>
+        <% if @posts.length == 0%>
           <tr>
-            <td><%= post.title %></td>
-            <td><%= truncate(markdown(post.content), length: 10 ) %></td>
-            <td>
-              <% if post.published %>
-                Published
-              <% else %>
-                Draft
-              <% end %>
-            </td>
-            <td><%= post.category.name %></td>
-            <td><%= post.member.name %></td>
+            <td colspan=4 >There is no Posts</td>
           </tr>
+        <% else %>
+          <% @posts.each do |post| %>
+            <% if post.member.id == current_member.id || post.published == true %>
+              <tr>
+                <td><%= post.title %></td>
+                <td>
+                  <% if post.published %>
+                    Published
+                  <% else %>
+                    Draft
+                  <% end %>
+                </td>
+                <td><%= post.category.name %></td>
+                <td><%= post.member.name %></td>
+              </tr>
+            <% else %>
+              <tr>
+                <td colspan=4 >There is no Posts</td>
+              </tr>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-action">
+    <%= link_to 'detail', posts_path %>
+  </div>
+</div>

@@ -10,9 +10,7 @@
   <tbody>
     <% if @todos.length == 0 %>
       <tr>
-        <td colspan=1></td>
-        <td>No data in table<td>
-        <td colspan=1></td>
+        <td colspan=3 class="centerd">There is no todos<td>
       </tr>
     <% else %>
       <% @todos.each do |todo| %>

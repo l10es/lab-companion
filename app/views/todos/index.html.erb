@@ -1,31 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid" style="padding-top: 2rem">
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title center">Todos</span>
+          <div class="divider"></div>
+          <% if @todos.length == 0 %>
+            <table class="bordered highlight centered">
+          <% else %>
+            <table class="bordered responsive-table highlight centered">
+          <% end %>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Writer</th>
+                <% if current_member.role.id == 1 && @todos.length != 0%>
+                  <th colspan="3" class="centered">Operations</th>
+                <% end %>
+              </tr>
+            </thead>
 
-<h1>Todos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Writer</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.title %></td>
-        <td><%= todo.content %></td>
-        <td><%= todo.member.name %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Todo', new_todo_path %>
+            <tbody>
+              <% if @todos.length == 0 %>
+                <tr>
+                  <td colspan=3 class="centered">There is no Todos</td>
+                </tr>
+              <% else %>
+                <% @todos.each do |todo| %>
+                  <% if todo.member.id == current_member.id %>
+                    <tr>
+                      <td><%= todo.title %></td>
+                      <td><%= truncate(todo.content) %></td>
+                      <td><%= todo.member.name %></td>
+                      <td><%= link_to 'Show', todo %></td>
+                      <% if current_member.role.id == 1 %>
+                        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+                        <% if current_member.id == todo.member.id %>
+                          <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% end %>
+                      <% end %>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td colspan=3 class="centered">There is no Todos</td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "components/floating_action_button" %>

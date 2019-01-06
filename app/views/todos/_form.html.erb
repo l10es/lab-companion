@@ -1,27 +1,44 @@
-<%= form_with(model: todo, local: true) do |form| %>
-  <% if todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<div class="container-fluid pt-3" style="padding-top: 4rem">
+  <div class="row">
+    <div class="col s10 offset-s1">
+      <div class="card hoverable">
+        <div class="card-content">
+          <span class="card-title center">
+          <h3>Editing Post</h3>
+          </span>
+          <div class="divider"></div>
+          <%= form_with(model: todo, local: true) do |form| %>
+            <% if todo.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
-      <ul>
-      <% todo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                <ul>
+                  <% todo.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="field">
+              <%= form.label :title %>
+              <%= form.text_field :title %>
+            </div>
+
+            <div class="field">
+              <%= form.label "Content (Markdown enabled)" %>
+              <%= form.text_area :content, class: "materialize-textarea" %>
+            </div>
+            <br />
+            <div class="form-actions">
+                <i class="btn waves-effect waves-input-wrapper" ><input class="waves-button-input" data-disable-with="Submit" value="Submit" type="submit" name="commit"></i>
+              </div>
+          <% end %>
+        </div>
+        <div class="card-action">
+          <%= link_to "back", todos_path %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
