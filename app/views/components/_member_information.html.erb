@@ -45,8 +45,28 @@
           <%= current_member.status.name %>
         </p>
       <% end %>
+      <br />
+      <p>
+        <strong>Icon:</strong>
+        <span>
+        <% if current_member.icon %>
+          <% icon = current_member.icon %>
+          <% if icon.content_type =~ /^image\/.*?(png|jpeg|gif|jpg)$/ %>
+            <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60', class: "circle"%>
+          <% else %>
+            <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle", :size => '60x60'%>
+          <% end %>
+        <% else %>
+          <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle", :size => '60x60' %>
+        <% end %>
+        </span>
+      </p>
+
     </div>
     <div class="card-action">
       <%= link_to 'Edit', edit_member_path(current_member) %>
+      <% if !current_page?(:member_root) %>
+        <%= link_to 'Back to Home', root_path %>
+      <% end %>
     </div>
   </div>

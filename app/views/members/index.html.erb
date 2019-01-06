@@ -31,7 +31,7 @@
                       <% if member.icon %>
                         <% icon = member.icon %>
                         <% if icon.content_type =~ /^image\/.*?(png|jpeg|gif|jpg)$/ %>
-                          <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60'%>
+                          <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60', class: "circle" %>
                         <% else %>
                           <%= image_tag 'default_face.png', :alt => 'No Icon a', class: "circle", :size => '60x60'%>
                         <% end %>
