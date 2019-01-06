@@ -57,3 +57,6 @@ localhost:3000/
 # or
 YOUR_SERVER_IP:3000/
 ```
+
+## License
+This software is released under the MIT License, see LICENSE file.
