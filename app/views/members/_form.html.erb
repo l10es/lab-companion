@@ -5,7 +5,7 @@
         <div class="card-content">
           <span class="card-title center">
             <% if current_page?(edit_member_path) %>
-              Edit member informations
+              <h5>Edit member informations</h5>
             <% end %>
           </span>
           <div class="divider"></div>
@@ -37,10 +37,19 @@
                 <%= form.text_field :name %>
               </div>
 
+              <div class="field">
+                <%= form.label :room_status_id %>
+                <%= form.select :room_status_id, RoomStatus.all.collect{|c| [c.name, c.id]} %>
+
               <% if current_member.role_id == 1 %>
                 <div class="field">
                   <%= form.label :role_id %>
-                  <%= form.select :role_id, Role.all.collect{ |c| [c.name, c.id]} %>
+                  <%= form.select :role_id, Role.all.collect{|c| [c.name, c.id]} %>
+                </div>
+
+                <div class="field">
+                  <%= form.label :status_id %>
+                  <%= form.select :status_id, Status.all.collect{|c| [c.name, c.id]} %>
                 </div>
               <% end %>
               <br />
@@ -56,6 +65,7 @@
               <% if member.id == current_member.id %>
                 <%= link_to "edit email or password", edit_member_registration_path %>
               <% end %>
+              <%= link_to "edit Icon", icons_register_path %>
               <%= link_to "back", member_root_url %>
             </div>
           </div>

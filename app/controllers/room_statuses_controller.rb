@@ -55,6 +55,11 @@ class RoomStatusesController < ApplicationController
     end
   end
 
+  def icon
+    icon = Icon.find(params[:id])
+    send_data icon.content, :filename => icon.name, :type => icon.content_type
+  end
+
   # DELETE /room_statuses/1
   # DELETE /room_statuses/1.json
   def destroy

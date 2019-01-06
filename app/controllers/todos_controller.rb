@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_member!
   before_action :active_member!
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
@@ -6,7 +7,7 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.where(member_id: current_member.id).all
   end
 
   # GET /todos/1
@@ -62,6 +63,11 @@ class TodosController < ApplicationController
       format.html { redirect_to todos_url, notice: 'Todo was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def icon
+    icon = Icon.find(params[:id])
+    send_data icon.content, :filename => icon.name, :type => icon.content_type
   end
 
   private

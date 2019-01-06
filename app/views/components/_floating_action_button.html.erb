@@ -1,0 +1,9 @@
+<div class="fixed-action-btn click-to-toggle">
+  <% if current_page?(posts_path) %>
+    <a class="btn-floating btn-large" href="<%= new_post_path %>">
+  <% elsif current_page?(todos_path) %>
+    <a class="btn-floating btn-large" href="<%= new_todo_path %>">
+  <% end %>
+    <i class="large material-icons">add</i>
+  </a>
+</div>

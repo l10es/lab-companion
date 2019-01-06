@@ -13,7 +13,7 @@ In the future, we will provide following functions on this application.
 1. File storage
 2. Calender
 3. Laboratory's event notification
-4. Customizing the laboratory members icon
+4. Customizing the laboratory members header image
 
 ## Requirements
 
@@ -34,26 +34,26 @@ First, clone this repository.
 git clone git@github.com:danboruya/lab-companion
 ```
 
-Then, you have to run the following command.
+Then, run the following command to set-up.
 
 ```bash
-# On this repositories directory
-bundle install
-
-# Migrateing the database for your environment.
-rake db:migrate
+# Setup the environment
+bash ./setup.sh
 ```
 
 Once done, you can run the application.
 
 ```bash
 rails s -b 0.0.0.0
+
+# or
+rails s -b YOUR_SERVER_IP
 ```
 
 Finally, you can access the web application on your browser.
 
-```
+```bash
 localhost:3000/
 # or
-SERVER_IP:3000/
+YOUR_SERVER_IP:3000/
 ```

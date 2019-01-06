@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.where(member_id: current_member.id).all
   end
 
   # GET /posts/1
@@ -65,6 +65,11 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def icon
+    icon = Icon.find(params[:id])
+    send_data icon.content, :filename => icon.name, :type => icon.content_type
   end
 
   private

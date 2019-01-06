@@ -33,5 +33,19 @@
   <%= @member.status.name %>
 </p>
 
+<p>
+  <strong>Icon:</strong>
+  <% if @member.icon %>
+    <% icon = @member.icon %>
+    <% if icon.content_type =~ /^image\/.*?(png|jpeg|gif|jpg)$/ %>
+      <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60' %>
+    <% else %>
+      <%= image_tag 'default_face.png', :alt => 'No Icon' %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'default_face.png', :alt => 'No Icon' %>
+  <% end %>
+<p>
+
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

@@ -16,6 +16,7 @@
           </li>
         <% else %>
           <li><%= link_to "Log in", new_member_session_path, class: "waves-efect" %></li>
+          <li><%= link_to "Sign up", new_member_registration_path, class: "waves-efect" %></li>
           <li><div class="divider"></div></li>
           &nbsp;
         <% end %>
@@ -28,10 +29,19 @@
   <% if member_signed_in? %>
     <li><div class="user-view">
       <div class="background">
-        <%= image_tag "wellcome_wallpaper.jpg", :size => '300x160' %>
+        <%= image_tag 'wellcome_wallpaper.jpg', :alt => 'No background image', :size => '300x160' %>
       </div>
       <a href="/members/<%= current_member.id %>" class="plain-link"><span>
-        <%= image_tag "UserFace.png", class: "circle" %>
+        <% if current_member.icon %>
+          <% icon = current_member.icon %>
+          <% if icon.content_type =~ /^image\/.*?(png|jpeg|gif|jpg)$/ %>
+            <%= image_tag url_for({:action => 'icon', :id=> icon.id, :filename => icon.name}), :alt => icon.name, :size => '60x60', class: "circle"%>
+          <% else %>
+            <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle"%>
+          <% end %>
+        <% else %>
+          <%= image_tag 'default_face.png', :alt => 'No Icon', class: "circle" %>
+        <% end %>
       </a></span>
       <a href="/members/<%= current_member.id %>" class="plain-link"><span class="white-text name">
         <%= current_member.name %>
@@ -64,5 +74,6 @@
 
   <% else %>
     <li><%= link_to "Log in", new_member_session_path, class: "waves-efect" %></li>
+    <li><%= link_to "Sign up", new_member_registration_path, class: "waves-efect" %></li>
   <% end %>
 </ul>

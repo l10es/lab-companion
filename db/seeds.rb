@@ -19,11 +19,15 @@ RoomStatus.find_or_create_by(id: 1) do |room_status|
 end
 
 RoomStatus.find_or_create_by(id: 2) do |room_status|
-  room_status.name = 'In Room'
+  room_status.name = 'In room'
 end
 
 Status.find_or_create_by(id: 1) do |status|
   status.name = 'Active'
+end
+
+Status.find_or_create_by(id: 2) do |status|
+  status.name = 'In active'
 end
 
 Grade.find_or_create_by(id: 1) do |grade|

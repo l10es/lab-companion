@@ -1,0 +1,24 @@
+<div class="fixed-action-btn click-to-toggle">
+  <a class="btn-floating btn-large">
+    <i class="large material-icons">add</i>
+  </a>
+
+  <ul>
+    <% if current_member.role.id == 1%>
+      <li>
+        <a class="btn-floating" href="<%= members_path %>"><i class="material-icons">how_to_reg</i></a>
+        <a href="<%= members_path %>" class="btn-floating fab-tip">Edit a Members</a>
+      </li>
+    <% end %>
+
+    <li>
+      <a class="btn-floating" href="<%= new_post_path %>"><i class="material-icons">create</i></a>
+      <a href="<%= new_post_path %>" class="btn-floating fab-tip">Add a Post</a>
+    </li>
+
+    <li>
+      <a class="btn-floating" href="<%= new_todo_path %>"><i class="material-icons">ballot</i></a>
+      <a href="<%= new_todo_path %>" class="btn-floating fab-tip">Add a Todo</a>
+    </li>
+  </ul>
+</div>
