@@ -1,12 +1,12 @@
 # Lab-companion
 
 ## Description
-This web application assist to manage your laboratory management.
+This web application assist to manage your laboratory member.
 Now you can use the following functions on this application.
 
 1. Laboratory room member management
-2. Posting the page any topic
-3. Managing your todo
+2. Post the article with markdown supported
+3. Managing your todo with markdown supported
 
 In the future, we will provide following functions on this application.
 
