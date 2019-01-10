@@ -14,6 +14,7 @@ In the future, we will provide following functions on this application.
 2. Calender
 3. Laboratory's event notification
 4. Customizing the laboratory members header image
+5. Apply the i18n to this application
 
 ## Requirements
 
